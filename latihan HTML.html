@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profil Pribadi | Kahfi</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --secondary: #14b8a6;
+      --dark: #0f172a;
+      --light: #f8fafc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(180deg, #0f766e, #022c22);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* === TOPOGRAPHIC CONTOUR BACKGROUND === */
+html::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    repeating-radial-gradient(
+      circle at center,
+      rgba(255,255,255,0.12) 0px,
+      rgba(255,255,255,0.12) 1px,
+      transparent 1px,
+      transparent 26px
+    );
+  animation: contourMove 60s linear infinite;
+  z-index: -2;
+  pointer-events: none;
+}
+
+html::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--bg-gradient);
+  z-index: -3;
+}
+
+@keyframes contourMove {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 700px; }
+}
+
+/* === DAY / NIGHT MODE === */
+:root {
+  --bg-gradient: linear-gradient(180deg, #14b8a6, #0f766e);
+}
+
+body.day {
+  --bg-gradient: linear-gradient(180deg, #14b8a6, #0f766e);
+}
+
+body.night {
+  --bg-gradient: linear-gradient(180deg, #020617, #020617);
+}
+
+body.night html::before {
+  background-image:
+    repeating-radial-gradient(
+      circle at center,
+      rgba(148,163,184,0.18) 0px,
+      rgba(148,163,184,0.18) 1px,
+      transparent 1px,
+      transparent 30px
+    );
+}
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(to top, #022c22 20%, transparent 70%);
+      z-index: -1;
+    }
+body.day section h2 {
+  color: #d6e6e6; /* cerah di siang hari */
+}
+
+body.night section h2 {
+  color: #ccfbf1; /* kontras lembut di malam hari */
+}
+.skills a.skill {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.skills a.skill:hover {
+  background: var(--secondary);
+  color: white;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+    @keyframes wind {
+      0% { transform: skewX(-1deg); }
+      50% { transform: skewX(1.5deg); }
+      100% { transform: skewX(-0.5deg); }
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 3rem 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      max-width: 800px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .hero img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p.tagline {
+      font-size: 1.1rem;
+      color: #475569;
+      margin-bottom: 1.5rem;
+    }
+
+    .socials a {
+      text-decoration: none;
+      color: white;
+      background: var(--primary);
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      margin: 0 0.3rem;
+      display: inline-block;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .socials a:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #ccfbf1; /* tosca terang */
+  text-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      margin-bottom: 2rem;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill {
+      background: #f1f5f9;
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #0f172a;
+      color: #cbd5f5;
+      margin-top: 4rem;
+    }
+/* === TOPOGRAPHIC CONTOUR BACKGROUND === */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    repeating-radial-gradient(
+      circle at 50% 50%,
+      rgba(255,255,255,0.08) 0px,
+      rgba(255,255,255,0.08) 1px,
+      transparent 1px,
+      transparent 24px
+    );
+  animation: contourMove 40s linear infinite;
+  z-index: -2;
+  pointer-events: none;
+}
+
+@keyframes contourMove {
+  from { background-position: 0 0; }
+  to { background-position: 600px 400px; }
+}
+
+/* === DAY / NIGHT THEMES === */
+body.day {
+  background: linear-gradient(180deg, #14b8a6, #0f766e);
+}
+
+body.night {
+  background: linear-gradient(180deg, #020617, #020617);
+}
+
+body.night::before {
+  background-image:
+    repeating-radial-gradient(
+      circle at 50% 50%,
+      rgba(148,163,184,0.15) 0px,
+      rgba(148,163,184,0.15) 1px,
+      transparent 1px,
+      transparent 28px
+    );
+}
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="hero">
+      <img src="c:\Users\Asus\OneDrive\文件\Data diri\saya.jpeg" alt="Foto Profil" />
+      <h1>Welcome To My Site <span>Make Yourself at Home!</span></h1>
+      <p class="tagline">Undergraduate Student of Cartography and Remote Sensing at Universitas Gadjah Mada</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/kahfiradana_?igsh=dnJscDVoc3JwZWky&utm_source=qr" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/kahfi-bagus-radana-41193634a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener">Linkedin</a>
+        <a href="https://www.tiktok.com/@utm_49s?_r=1&_t=ZS-93PqJoncinP" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <h2>Tentang Saya</h2>
+    <div class="card">
+      <p>
+        Saya adalah mahasiswa baru dari program studi Kartografi dan Penginderaan Jauh Universitas Gadjah Mada Angkatan 2024. Saya adalah orang yang aktif dalam berorganisasi serta memiliki pengalaman mengikuti kegiatan volunteer di masyarakat. Hal ini karena saya memiliki minat yang kuat untuk mengkaji isu-isu sosial yang berada di dalam masyarakat. Dalam berorganisasi, saya memiliki kelebihan dalam mengatur Waktu dengan baik, mudah beradaptasi dalam tim, serta disiplin.
+      </p>
+    </div>
+  </section>
+
+  <section>
+  <h2>Keahlian</h2>
+  <div class="card skills">
+    <a href="https://website-kamu-1.com" class="skill" target="_blank">
+      Team Working
+    </a>
+    <a href="https://website-kamu-2.com" class="skill" target="_blank">
+      Field Surveyor
+    </a>
+    <a href="https://website-kamu-3.com" class="skill" target="_blank">
+      Spatial Analysis
+    </a>
+    <a href="https://website-kamu-3.com" class="skill" target="_blank">
+      Public Speaking
+      <a href="https://website-kamu-3.com" class="skill" target="_blank">
+      Photo Editing
+    </a>
+    </a>
+  </div>
+</section>
+
+
+  <section>
+    <h2>Pengalaman</h2>
+    <div class="card">
+      <ul>
+        <li>Volunteer Abdi Desa – Departemen Pengembangan Masyarakat BEM KM UGM (2025)</li>
+        <li>Master of Ceremony Study Banding & Benchmarking (2025)</li>
+        <li>Program Mahasiswa Berdampak – Sosialisasi prototipe alat deteksi sumber air & ketahanan pangan Desa Dlingo (2025)</li>
+        <li>Himpunan Mahasiswa Sains Informasi Geografi – Tutor mata kuliah fisika penginderaan jauh & statistika UTS/UAS (2025–sekarang)</li>
+        <li>Volunteer pelestarian tukik di Pantai Pelangi – Departemen SOSMAS (2024)</li>
+        <li>Koordinator Talent KPJ’s NIGHT 2024</li>
+        <li>Staff Divisi Advokasi Ikatan Pelajar Muhammadiyah PD Sleman (2023)</li>
+        <li>Intersect 2025/2026 – Pemandu & pembimbing mahasiswa baru</li>
+      </ul>
+    </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Website Guweh. Dibuat dengan HTML & CSS.</p>
+  </footer>
+<script>
+  const hour = new Date().getHours();
+  const body = document.body;
+
+  if (hour >= 6 && hour < 18) {
+    body.classList.add("day");
+  } else {
+    body.classList.add("night");
+  }
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const hour = new Date().getHours();
+    if (hour >= 6 && hour < 18) {
+      document.body.classList.add("day");
+    } else {
+      document.body.classList.add("night");
+    }
+  });
+</script>
+
+</body>
+</html>
